@@ -1,105 +1,163 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const overlays = document.querySelectorAll(".overlay");
-  const header = document.querySelector("header");
+// DOM Elements
+const header = document.querySelector('header');
+const navLinks = document.querySelector('.nav-links');
+const hamburger = document.querySelector('.hamburger');
+const navLinksItems = document.querySelectorAll('.nav-links li');
+const themeToggle = document.querySelector('.theme-toggle');
+const moonIcon = document.querySelector('.fa-moon');
+const sunIcon = document.querySelector('.fa-sun');
+const contactForm = document.getElementById('contact-form');
 
-  // Delay reveal (simulate waiting for model animation)
-  setTimeout(() => {
-    // show overlays
-    overlays.forEach(el => {
-      el.classList.remove("hidden");
-      el.classList.add("visible");
-    });
-
-    // show header
-    header.classList.remove("hidden");
-    header.classList.add("visible");
-  }, 3200); // 3s delay
+// Header scroll effect
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('header-scroll');
+    } else {
+        header.classList.remove('header-scroll');
+    }
 });
 
-// About Section
-document.addEventListener("DOMContentLoaded", () => {
-  const aboutSection = document.querySelector(".about");
-  const aboutImage = document.querySelector(".about-image");
-  const aboutText = document.querySelector(".about-text");
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        aboutImage.classList.add("visible");
-        aboutText.classList.add("visible");
-        obs.unobserve(entry.target); // trigger once
-      }
-    });
-  }, { threshold: 0.8 }); // trigger when 30% is visible
-
-  if (aboutSection) observer.observe(aboutSection);
+// Mobile Navigation
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
+    hamburger.classList.toggle('active');
+    document.body.classList.toggle('no-scroll'); // Prevent body scrolling when menu is open
 });
 
+// Close mobile menu when clicking on a link
+navLinksItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (navLinks.classList.contains('nav-active')) {
+            navLinks.classList.remove('nav-active');
+            hamburger.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+});
 
+// Theme toggle functionality
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
 
+    // Toggle icons
+    if (document.body.classList.contains('light-theme')) {
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+    } else {
+        moonIcon.style.display = 'block';
+        sunIcon.style.display = 'none';
+    }
 
+    // Save theme preference to localStorage
+    const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+    localStorage.setItem('theme', theme);
+});
 
-// Partners section
-document.addEventListener("DOMContentLoaded", () => {
-  const partners = document.querySelector(".partners");
-  if (!partners) return;
+// Load saved theme preference
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
 
-  // Select items to animate (text + button + cards)
-  const itemsToReveal = [
-    partners.querySelector("h2"),
-    partners.querySelector(".description"),
-    partners.querySelector(".contact-btn"),
-    ...partners.querySelectorAll(".partner-card")
-  ].filter(Boolean); // remove nulls in case something is missing
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+    }
 
-  // Observer setup
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Staggered reveal effect
-        itemsToReveal.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.add("visible");
-          }, index * 250); // 250ms gap between items
+    // Add animations with delay for elements
+    const animateElements = () => {
+        const sections = document.querySelectorAll('section');
+
+        sections.forEach(section => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(section);
         });
+    };
 
-        obs.unobserve(partners); // run once
-      }
-    });
-  }, { threshold: 0.2 }); // trigger when 20% is visible
-
-  observer.observe(partners);
+    animateElements();
 });
 
+// Handle contact form submission
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-// Contact
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".contact-form");
-  const status = document.getElementById("status");
-  const contactSection = document.querySelector(".contact-container");
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
 
-  // Form fake sending effect
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    status.textContent = "🔐 Encrypting & sending securely...";
-    status.style.color = "#00f0ff";
+        // Simple form validation
+        if (!name || !email || !subject || !message) {
+            alert('Please fill out all fields');
+            return;
+        }
 
-    setTimeout(() => {
-      status.textContent = "✅ Your secure message has been sent!";
-      status.style.color = "#0f0";
-      form.reset();
-    }, 3000);
-  });
+        // Here you would normally send the form data to a server
+        // For this demo, we'll just show a success message
 
-  // Intersection Observer for popup animation
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        contactSection.classList.add("visible");
-        obs.unobserve(entry.target); // run once
-      }
+        const formData = {
+            name,
+            email,
+            subject,
+            message
+        };
+
+        console.log('Form submitted:', formData);
+
+        // Show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <p>Thank you for your message, ${name}! I'll get back to you soon.</p>
+        `;
+
+        // Replace form with success message
+        contactForm.innerHTML = '';
+        contactForm.appendChild(successMessage);
     });
-  }, { threshold: 0.6 }); // trigger when 30% visible
+}
 
-  if (contactSection) observer.observe(contactSection);
+// Add smooth scrolling to all links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return; // Skip if href is just "#"
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust for header height
+                behavior: 'smooth'
+            });
+        }
+    });
 });
+
+// Add typing effect to the binary in hero section
+const binaryElement = document.querySelector('.binary');
+if (binaryElement) {
+    const originalText = binaryElement.innerText;
+    binaryElement.innerText = '';
+
+    let i = 0;
+    const typeWriter = () => {
+        if (i < originalText.length) {
+            binaryElement.innerText += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+        }
+    };
+
+    // Start typing effect when page loads
+    setTimeout(typeWriter, 1000);
+}
