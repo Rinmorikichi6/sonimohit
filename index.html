@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohit Soni | Cyber Security Portfolio</title>
 
+<!-- ICONS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<!-- AOS ANIMATION -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 <style>
 :root{
   --bg:#0b0f19;
@@ -18,18 +24,18 @@ body{
   font-family:Segoe UI,Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  line-height:1.7;
 }
 a{text-decoration:none;color:inherit}
 section{
   max-width:1100px;
   margin:auto;
-  padding:70px 20px;
+  padding:80px 20px;
 }
 h2{
   color:var(--accent);
-  font-size:28px;
-  margin-bottom:20px;
+  font-size:30px;
+  margin-bottom:25px;
 }
 
 /* HERO */
@@ -40,15 +46,21 @@ h2{
   justify-content:center;
   text-align:center;
 }
-.hero h1{font-size:44px}
+.hero img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:3px solid var(--accent);
+  margin-bottom:20px;
+}
+.hero h1{font-size:46px}
 .hero p{
   color:var(--muted);
-  margin:15px 0 25px;
   font-size:18px;
+  margin:12px 0 28px;
 }
 .hero a{
-  display:inline-block;
-  padding:14px 28px;
+  padding:14px 30px;
   background:var(--accent);
   color:#000;
   border-radius:30px;
@@ -59,50 +71,59 @@ h2{
 .about p{
   max-width:850px;
   color:#d1d5db;
-  font-size:16px;
+  font-size:17px;
 }
 
 /* SKILLS */
 .skills{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
 }
-.skill-card{
+.skill{
   background:var(--card);
-  padding:18px;
-  border-radius:12px;
+  padding:22px;
+  border-radius:14px;
+}
+.skill i{
+  font-size:22px;
+  color:var(--accent);
+  margin-bottom:10px;
 }
 
 /* PROJECTS */
 .projects{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
+  gap:22px;
 }
 .card{
   background:var(--card);
-  padding:22px;
-  border-radius:14px;
+  padding:24px;
+  border-radius:16px;
+  transition:0.3s;
+}
+.card:hover{
+  transform:translateY(-6px);
 }
 
 /* CONTACT */
 .contact-box{
   background:var(--card);
-  padding:30px;
-  border-radius:15px;
-  max-width:500px;
+  padding:32px;
+  border-radius:18px;
+  max-width:520px;
 }
 input,textarea{
   width:100%;
-  padding:12px;
-  margin-bottom:14px;
+  padding:13px;
+  margin-bottom:15px;
   border-radius:8px;
   border:none;
 }
 button{
   width:100%;
-  padding:12px;
+  padding:13px;
   background:var(--accent);
   border:none;
   border-radius:8px;
@@ -113,7 +134,7 @@ button{
 /* FOOTER */
 footer{
   text-align:center;
-  padding:25px;
+  padding:28px;
   background:#020617;
   color:var(--muted);
 }
@@ -139,8 +160,10 @@ footer{
 <body>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" data-aos="fade-up">
   <div>
+    <!-- OPTIONAL PROFILE IMAGE -->
+    <img src="https://i.imgur.com/8Km9tLL.png" alt="Profile">
     <h1>Mohit Soni</h1>
     <p>Computer Engineer • Cyber Security Learner</p>
     <a href="#contact">Contact Me</a>
@@ -148,58 +171,49 @@ footer{
 </section>
 
 <!-- ABOUT -->
-<section class="about">
+<section class="about" data-aos="fade-right">
   <h2>About Me</h2>
   <p>
-    I am a Computer Engineer with a strong interest in Cyber Security.
-    I focus on understanding security fundamentals, networking concepts,
-    Linux systems, and practical security tools through continuous learning
-    and hands-on practice.
+    I am a Computer Engineer with a focused interest in Cyber Security.
+    I actively learn security fundamentals, networking, Linux systems,
+    and practical tools through hands-on labs and continuous practice.
   </p>
 </section>
 
 <!-- SKILLS -->
-<section>
+<section data-aos="fade-up">
   <h2>Skills & Tools</h2>
   <div class="skills">
-    <div class="skill-card">Linux Fundamentals</div>
-    <div class="skill-card">Networking Basics</div>
-    <div class="skill-card">Cyber Security Concepts</div>
-    <div class="skill-card">Nmap (Basic)</div>
-    <div class="skill-card">Wireshark (Basic)</div>
-    <div class="skill-card">Git & GitHub</div>
+    <div class="skill"><i class="fa-solid fa-terminal"></i> Linux Fundamentals</div>
+    <div class="skill"><i class="fa-solid fa-network-wired"></i> Networking Basics</div>
+    <div class="skill"><i class="fa-solid fa-shield-halved"></i> Cyber Security Concepts</div>
+    <div class="skill"><i class="fa-solid fa-magnifying-glass"></i> Nmap (Basic)</div>
+    <div class="skill"><i class="fa-solid fa-chart-simple"></i> Wireshark (Basic)</div>
+    <div class="skill"><i class="fa-brands fa-github"></i> Git & GitHub</div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section>
+<section data-aos="fade-up">
   <h2>Projects & Labs</h2>
   <div class="projects">
     <div class="card">
       <h3>Cyber Security Labs</h3>
-      <p>Hands-on practice with security fundamentals, networking and tools.</p>
+      <p>Hands-on labs covering security basics, tools, and attack simulations.</p>
     </div>
     <div class="card">
       <h3>TryHackMe Practice</h3>
-      <p>Completed beginner-level rooms to understand real-world scenarios.</p>
+      <p>Completed beginner rooms focusing on real-world security concepts.</p>
     </div>
     <div class="card">
       <h3>Personal Portfolio</h3>
-      <p>Secure personal website hosted on GitHub Pages with HTTPS.</p>
+      <p>Secure personal website hosted with HTTPS and custom domain.</p>
     </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section>
-  <h2>Certifications</h2>
-  <div class="card">
-    <p>Currently pursuing certifications and hands-on learning in Cyber Security.</p>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" data-aos="fade-up">
   <h2>Contact</h2>
   <div class="contact-box">
     <form action="https://formspree.io/f/xxxxxxxx" method="POST">
@@ -211,11 +225,16 @@ footer{
   </div>
 </section>
 
-<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">💬</a>
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
 
 <footer>
   © 2026 Mohit Soni • Cyber Security Portfolio
 </footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({duration:900, once:true});</script>
 
 </body>
 </html>
