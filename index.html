@@ -1,130 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohit Soni | Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      line-height: 1.6;
-    }
-    header {
-      background: #020617;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 18px;
-      color: #94a3b8;
-    }
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      color: #38bdf8;
-      margin-bottom: 20px;
-    }
-    .skills span {
-      display: inline-block;
-      background: #1e293b;
-      padding: 10px 15px;
-      margin: 5px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
-    .projects div {
-      background: #020617;
-      padding: 20px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #020617;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: #fff;
-      padding: 15px 18px;
-      border-radius: 50%;
-      font-size: 20px;
-      text-decoration: none;
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 28px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohit Soni | Portfolio</title>
+
+<style>
+:root{
+  --bg:#0f172a;
+  --card:#020617;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:#38bdf8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:70px 20px;
+}
+h2{
+  color:var(--accent);
+  font-size:30px;
+  margin-bottom:20px;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero h1{font-size:44px}
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  margin:15px 0 25px;
+}
+.hero a{
+  padding:14px 30px;
+  background:var(--accent);
+  color:#000;
+  border-radius:30px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* ABOUT */
+.about p{
+  max-width:800px;
+  font-size:17px;
+  color:#cbd5f5;
+}
+
+/* SKILLS */
+.skills span{
+  display:inline-block;
+  background:#1e293b;
+  padding:12px 18px;
+  margin:6px;
+  border-radius:25px;
+  font-size:14px;
+}
+
+/* PROJECTS */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:15px;
+}
+.card h3{margin-bottom:10px}
+
+/* CONTACT */
+.contact-box{
+  background:var(--card);
+  padding:30px;
+  border-radius:15px;
+  max-width:500px;
+}
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:none;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:600;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:25px;
+  background:#020617;
+  color:var(--muted);
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#25d366;
+  padding:15px 18px;
+  border-radius:50%;
+  font-size:22px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:32px}
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h1>Mohit Soni</h1>
-  <p>Computer Engineer | Cyber Security Learner</p>
-</header>
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Mohit Soni</h1>
+    <p>Computer Engineer • Cyber Security Learner</p>
+    <a href="#contact">Contact Me</a>
+  </div>
+</section>
 
-<section>
+<!-- ABOUT -->
+<section class="about">
   <h2>About Me</h2>
   <p>
-    I am a Computer Engineer with interest in Cyber Security, ethical hacking,
-    and modern technologies. I am continuously learning and building skills
-    to grow in the tech industry.
+    I am a Computer Engineer with a strong interest in Cyber Security and modern technologies.
+    I enjoy learning, building projects, and continuously improving my technical skills.
   </p>
 </section>
 
+<!-- SKILLS -->
 <section>
   <h2>Skills</h2>
   <div class="skills">
     <span>HTML</span>
     <span>CSS</span>
     <span>JavaScript</span>
+    <span>Linux Basics</span>
+    <span>Networking Fundamentals</span>
     <span>Cyber Security Basics</span>
-    <span>Networking</span>
-    <span>Linux</span>
+    <span>Git & GitHub</span>
   </div>
 </section>
 
+<!-- PROJECTS -->
 <section>
   <h2>Projects</h2>
   <div class="projects">
-    <div>
-      <h3>Portfolio Website</h3>
-      <p>Personal portfolio built using HTML and CSS.</p>
+    <div class="card">
+      <h3>Personal Portfolio</h3>
+      <p>A responsive personal website with custom domain and HTTPS.</p>
     </div>
-    <div>
+    <div class="card">
       <h3>Cyber Security Practice</h3>
-      <p>Hands-on labs and learning using online platforms.</p>
+      <p>Hands-on learning through labs, tools, and security concepts.</p>
     </div>
   </div>
 </section>
 
-<section>
+<!-- CONTACT -->
+<section id="contact">
   <h2>Contact</h2>
-  <p>Email: mohitsoni@example.com</p>
-  <p>Location: Ahmedabad, Gujarat</p>
+  <div class="contact-box">
+    <form action="https://formspree.io/f/xxxxxxxx" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 </section>
 
 <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">💬</a>
 
 <footer>
-  © 2026 Mohit Soni | All Rights Reserved
+  © 2026 Mohit Soni • All Rights Reserved
 </footer>
 
 </body>
